@@ -40,6 +40,20 @@ angular.module('app', ['ngStorage']).controller('indexController', function ($sc
             });
     }
 
+    $scope.createOrder = function () {
+
+        $http.post('http://localhost:8189/app/api/v1/orders',$scope.order)
+            .then(function () {
+
+                $scope.loadCart();
+            })
+            .catch(function (err) {
+                console.log(err)
+        }
+        );
+
+    }
+
     $scope.tryToAuth = function () {
         $http.post('http://localhost:8189/app/auth', $scope.user)
             .then(function successCallback(response) {
@@ -85,6 +99,8 @@ angular.module('app', ['ngStorage']).controller('indexController', function ($sc
                 alert('UNAUTHORIZED');
             });
     }
+
+
 
     $scope.loadProducts();
     $scope.loadCart();

@@ -34,4 +34,8 @@ public class CartService {
     public void clear() {
         getCurrentCart().clear();
     }
+
+    public boolean isEmpty() {
+        return getCurrentCart().getItems().isEmpty();
+    }
 }
